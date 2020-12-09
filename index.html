@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <title>Appointments</title>
+  <script src="jquery-3.5.1.js"></script>
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <button><b>Appointment Organiser</b></button>
+    <button>Day</button>
+    <button>3 Days</button>
+    <button>Week</button>
+    <button>Month</button>
+    <button id="openList">List</button>
+    <button  style="font-size:15px;" class="icon" onclick="openTopnav()">&#9776;</button>
+  </div>
+
+  <div id="daySchedule" class="scheduleContainer">
+    <input style="width: 80%;" type="date" id="date">
+    <button style="padding: 12px 20px;margin: 8px 0;box-sizing: border-box; width:20%; background-color:green; border:none;" onclick="openDay()">Go</button>
+    <table>
+      <tr id="1am"><th>01:00</th></tr>
+      <tr id="130am"><th>01:30</th></tr>
+      <tr id="2am"><th>02:00</th></tr>
+      <tr id="230am"><th>02:30</th></tr>
+      <tr id="3am"><th>03:00</th></tr>
+      <tr id="330am"><th>03:30</th></tr>
+      <tr id="4am"><th>04:00</th></tr>
+      <tr id="430am"><th>04:30</th></tr>
+      <tr id="5am"><th>05:00</th></tr>
+      <tr id="530am"><th>05:30</th></tr>
+      <tr id="6am"><th>06:00</th></tr>
+      <tr id="630am"><th>06:30</th></tr>
+      <tr id="7am"><th>07:00</th></tr>
+      <tr id="730am"><th>07:30</th></tr>
+      <tr id="8am"><th>08:00</th></tr>
+      <tr id="830am"><th>08:30</th></tr>
+      <tr id="9am"><th>09:00</th></tr>
+      <tr id="930am"><th>09:30</th></tr>
+      <tr id="10am"><th>10:00</th></tr>
+      <tr id="1030am"><th>10:30</th></tr>
+      <tr id="11am"><th>11:00</th></tr>
+      <tr id="1130am"><th>11:30</th></tr>
+      <tr id="12pm"><th>12:00</th></tr>
+      <tr id="1230pm"><th>12:30</th></tr>
+      <tr id="1pm"><th>13:00</th></tr>
+      <tr id="130pm"><th>13:30</th></tr>
+      <tr id="2pm"><th>14:00</th></tr>
+      <tr id="230pm"><th>14:30</th></tr>
+      <tr id="3pm"><th>15:00</th></tr>
+      <tr id="330pm"><th>15:30</th></tr>
+      <tr id="4pm"><th>16:00</th></tr>
+      <tr id="430pm"><th>16:30</th></tr>
+      <tr id="5pm"><th>17:00</th></tr>
+      <tr id="530pm"><th>17:30</th></tr>
+      <tr id="6pm"><th>18:00</th></tr>
+      <tr id="630pm"><th>18:30</th></tr>
+      <tr id="7pm"><th>19:00</th></tr>
+      <tr id="730pm"><th>19:30</th></tr>
+      <tr id="8pm"><th>20:00</th></tr>
+      <tr id="830pm"><th>20:30</th></tr>
+      <tr id="9pm"><th>21:00</th></tr>
+      <tr id="930pm"><th>21:30</th></tr>
+      <tr id="10pm"><th>22:00</th></tr>
+      <tr id="1030pm"><th>22:30</th></tr>
+      <tr id="11pm"><th>23:00</th></tr>
+      <tr id="1130pm"><th>23:30</th></tr>
+      <tr id="12am"><th>24:00</th></tr>
+      <tr id="1230am"><th>24:30</th></tr>
+
+    </table>
+  </div>
+
+
+  <table id="list" class="main" style="width:100%">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Contact</th>
+      <th>Start Date</th>
+      <th>Start Time</th>
+      <th>End Date</th>
+      <th>End Time</th>
+      <th>
+        <div contenteditable>Notes</div>
+      </th>
+      <th></th>
+      <th><button class="editbtn" onclick="deleteAll()">delete All</button></th>
+    </tr>
+  </table>
+
+  <div id="addApptMenu" class="addApptMenu">
+    <div class="addApptMenu-content" ">
+          <span class=" close">&times;</span>
+      <h1>Create New Appointment</h1>
+      <label for="title">Title</label>
+      <input type="text" placeholder="Title" id="title">
+      <label for="contact">Contact Information</label>
+      <input type="text" placeholder="phone or email" id="contact">
+      <table style="width:100%; border:0">
+        <tr>
+          <td>
+            <label for="sdate">Start Date</label>
+          </td>
+          <td>
+            <label for="edate">End Date</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="date" id="sdate">
+          </td>
+          <td>
+            <input type="date" id="edate">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="stime">Start Time</label>
+          </td>
+          <td>
+            <label for="etime">End Time</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="startHrs" name="Hours">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select> :
+            <select id="startMins" name="Mins">
+              <option value="0">00</option>
+              <option value="30">30</option>
+            </select>
+            <select id="startIsAm" name="AM/PM">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </td>
+          <td>
+            <select id="endHrs" name="Hours">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select> :
+            <select id="endMins" name="Mins">
+              <option value="0">00</option>
+              <option value="30">30</option>
+            </select>
+            <select id="endIsAm" name="AM/PM">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <label for="notes">Notes</label>
+      <input type="text" placeholder="notes" id="note">
+      <button class="submitt" id="addAppt" onclick="save()" style="float: right;">Add Appointment</button>
+    </div>
+  </div>
+  <div class="addApptMenu" id="editMenu">
+    <div class="addApptMenu-content">
+      <span class="closeBtn">&times;</span>
+    </div>
+  </div>
+  <button id="openMenu" class="fa fa-plus-circle addApptButton" style="font-size: 4rem; padding: 0;"
+    aria-hidden="true"></button>
+
+  <script src="appointment.js"></script>
+</body>
+
+</html>
