@@ -17,14 +17,13 @@
     <button id="openDaySched">Day</button>
     <button id="openWeekSched">Week</button>
     <button id="openMonthSched">Month</button>
-    <button id="openList">List</button>
     <button style="font-size:15px;" class="icon" onclick="openTopnav()">&#9776;</button>
   </div>
 
   <div id="daySchedule">
-    <input style="width: 79%;" type="date" id="date">
+    <input style="width: 75%;" type="date" id="date">
     <button
-      style="padding: 12px 20px;margin: 8px 0;box-sizing: border-box; width:20%; background-color:green; border:none;"
+      style="padding: 12px 20px; float: right;margin:8px 0;box-sizing: border-box; width:20%; background-color:green; border:none;"
       onclick="openDay()">Go</button>
     <table id="tableDay">
       <tr id="1AM">
@@ -175,9 +174,9 @@
   </div>
 
   <div id="weekSchedule" class="scheduleContainer">
-    <input style="width: 79%;" type="date" id="dateWeek">
+    <input style="width: 75%;" type="date" id="dateWeek">
     <button
-      style="padding: 12px 20px;margin: 8px 0;box-sizing: border-box; width:20%; background-color:green; border:none;"
+      style="padding: 12px 20px;float: right; margin: 8px 0;box-sizing: border-box; width:20%; background-color:green; border:none;"
       onclick="openWeek()">Go</button>
     <table id="tableweek">
       <tr>
@@ -242,13 +241,13 @@
       </tr>
       <tr id="330am">
         <th>03:30</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th id="d1-330AM"></th>
+        <th id="d2-330AM"></th>
+        <th id="d3-330AM"></th>
+        <th id="d4-330AM"></th>
+        <th id="d5-330AM"></th>
+        <th id="d6-330AM"></th>
+        <th id="d7-330AM"></th>
       </tr>
       <tr id="4am">
         <th>04:00</th>
@@ -262,13 +261,13 @@
       </tr>
       <tr id="430am">
         <th>04:30</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th id="d1-430AM"></th>
+        <th id="d2-430AM"></th>
+        <th id="d3-430AM"></th>
+        <th id="d4-430AM"></th>
+        <th id="d5-430AM"></th>
+        <th id="d6-430AM"></th>
+        <th id="d7-430AM"></th>
       </tr>
       <tr id="5am">
         <th>05:00</th>
@@ -692,7 +691,7 @@
   </table>
 
   <div id="monthSchedule">
-    <select style="width: 39%;" id="monthSelect">
+    <select style="padding: 12px 20px; width: 30%;" id="monthSelect">
       <option value="January">January</option>
       <option value="February">February</option>
       <option value="March">March</option>
@@ -706,13 +705,13 @@
       <option value="November">November</option>
       <option value="December">December</option>
     </select>
-    <select style="width: 39%;" id="yearSelect">
+    <select style=" padding: 12px 20px;width: 30%;margin: 8px 0;box-sizing: border-box;" id="yearSelect">
       <option value="2021">2021</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
     </select>
     <button
-      style="padding: 12px 20px;margin: 8px 0;box-sizing: border-box; width:20%; background-color:green; border:none;"
+      style="padding: 12px 20px; float: right; margin: 8px 0;box-sizing: border-box; width:20%; background-color:green; border:none;"
       onclick="displayMonth()">Go
     </button>
     <div class="month" id="monthTitle">
@@ -807,9 +806,13 @@
           </td>
         </tr>
       </table>
+      <label for="location">Location<span style="color: red">*</span> </label>
+
+      <input type="text" placeholder="Location" id="location">
+
       <label for="notes">Notes</label>
       <input type="text" placeholder="notes" id="note">
-      <h3><span style="color: red">*</span> Manditory fields</h3>
+      <h4><span style="color: red">*</span> Manditory fields</h4>
       <button class="submitt" id="addAppt" onclick="save()" style="float: right;">Add Appointment</button>
     </div>
   </div>
@@ -899,14 +902,19 @@
           </td>
         </tr>
       </table>
+      <label for="notes">Location<span style="color: red">*</span></label>
+      <input type="text" placeholder="Location" id="editLocation">
+
       <label for="notes">Notes</label>
       <input type="text" placeholder="notes" id="editNotes">
       <h3><span style="color: red">*</span> Manditory fields</h3>
-      <button class="submitt" id="chengeAppt" style="float: right;">Save Changes</button>
+      <button id= "deleteAppt" class="fa fa-trash"></button><button class="submitt" id="chengeAppt" style="float: right;">Save Changes</button>
     </div>
   </div>
+
   <button id="openMenu" class="fa fa-plus-circle addApptButton" style="font-size: 4rem; padding: 0;"
     aria-hidden="true"></button>
+
   <script src="appointment.js"></script>
 </body>
 

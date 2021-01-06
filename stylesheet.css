@@ -6,9 +6,6 @@ body {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  margin-bottom: 100px;
   left: 0;
   top: 0;
   width: 100%;
@@ -18,14 +15,14 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+
 /* Modal Content */
 .addApptMenu-content {
   background-color: #fefefe;
-  margin: auto;
-  padding: 32px;
+  margin: 15% auto;
+  padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  height: 70%;
 }
 
 .error {
