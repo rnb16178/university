@@ -18,7 +18,6 @@
     <button id="openWeekSched">Week</button>
     <button id="openMonthSched">Month</button>
     <button id="openList">List</button>
-    <button id="openEdit">Edit</button>
     <button style="font-size:15px;" class="icon" onclick="openTopnav()">&#9776;</button>
   </div>
 
@@ -823,7 +822,7 @@
       <label for="title">Title<span style="color: red">*</span> </label>
       <input type="text" placeholder="Title" id="titleEdit">
       <label for="contact">Contact Information<span style="color: red">*</span> </label>
-      <input type="text" placeholder="phone or email" id="contact">
+      <input type="text" placeholder="phone or email" id="contactEdit">
       <table>
         <tr>
           <td>
@@ -835,10 +834,10 @@
         </tr>
         <tr>
           <td>
-            <input type="date" id="sdate">
+            <input type="date" id="startDateEdit">
           </td>
           <td>
-            <input type="date" id="edate">
+            <input type="date" id="endDateEdit">
           </td>
         </tr>
         <tr>
@@ -851,7 +850,7 @@
         </tr>
         <tr>
           <td>
-            <select id="startHrs" name="Hours">
+            <select id="startHrsEdit" name="Hours">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -865,17 +864,17 @@
               <option value="11">11</option>
               <option value="12">12</option>
             </select> :
-            <select id="startMins" name="Mins">
+            <select id="startMinsEdit" name="Mins">
               <option value="0">00</option>
               <option value="30">30</option>
             </select>
-            <select id="startIsAm" name="AM/PM">
+            <select id="startIsAmEdit" name="AM/PM">
               <option value="AM">AM</option>
               <option value="PM">PM</option>
             </select>
           </td>
           <td>
-            <select id="endHrs" name="Hours">
+            <select id="endHrsEdit" name="Hours">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -889,11 +888,11 @@
               <option value="11">11</option>
               <option value="12">12</option>
             </select> :
-            <select id="endMins" name="Mins">
+            <select id="endMinsEdit" name="Mins">
               <option value="0">00</option>
               <option value="30">30</option>
             </select>
-            <select id="endIsAm" name="AM/PM">
+            <select id="endIsAmEdit" name="AM/PM">
               <option value="AM">AM</option>
               <option value="PM">PM</option>
             </select>
@@ -901,9 +900,9 @@
         </tr>
       </table>
       <label for="notes">Notes</label>
-      <input type="text" placeholder="notes" id="note">
+      <input type="text" placeholder="notes" id="editNotes">
       <h3><span style="color: red">*</span> Manditory fields</h3>
-      <button class="submitt" id="addAppt" onclick="save()" style="float: right;">Save Changes</button>
+      <button class="submitt" id="chengeAppt" style="float: right;">Save Changes</button>
     </div>
   </div>
   <button id="openMenu" class="fa fa-plus-circle addApptButton" style="font-size: 4rem; padding: 0;"

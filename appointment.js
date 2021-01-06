@@ -12,6 +12,7 @@ var endTimeHrs = {};
 var endTimeMins = {};
 var endTimeIsAm = {};
 var notes = {};
+var editID;
 if (savedIDs > 0) {
     id += savedIDs;
     title = JSON.parse(localStorage.getItem("title"));
@@ -45,8 +46,6 @@ var openMonthSched = document.getElementById("openMonthSched");
 var monthSced = document.getElementById("monthSchedule");
 var tableweek = document.getElementById("tableweek");
 var monthTitle = document.getElementById("monthTitle");
-var editButton = document.getElementById("openEdit");
-var editMenu = document.getElementById("editMenu");
 
 list.style.display = "none";
 tableDay.style.display = "none"
@@ -55,7 +54,6 @@ weekSchedule.style.display = "none";
 monthSced.style.display = "none";
 tableweek.style.display = "none";
 monthTitle.style.display = "none";
-editMenu.style.display="none";
 
 
 homeButton.onclick = function () {
@@ -67,9 +65,6 @@ homeButton.onclick = function () {
     tableweek.style.display = "none";
 }
 
-editButton.onclick = function(){
-    editMenu.style.display="block"
-}
 
 openDaySched.onclick = function () {
     daySchedule.style.display = "block";
@@ -193,7 +188,7 @@ function displayMonth() {
                 var out = "<li>";
                 for (var k = 0; k < savedIDs; k++) {
                     if (new Date(startDate[k]).getMonth() === monthID && parseInt(new Date(startDate[k]).getFullYear()) === parseInt(yearToDisplay) && new Date(startDate[k]).getDate() === (i)) {
-                        out += "<button>" + title[k] + "</button><br>";
+                        out += '<button onclick="openEdit(' + k + ')">' + title[k] + "</button><br>";
                         foundAppt = true
                     }
                 }
@@ -304,6 +299,70 @@ function openDay() {
                 document.getElementById(time).appendChild(meeting)
             }
         }
+    }
+}
+
+function openEdit(i) {
+    var editTitle = document.getElementById("titleEdit");
+    editTitle.value = title[i];
+    var editContact = document.getElementById("contactEdit");
+    editContact.value = contact[i];
+    var editStartDate = document.getElementById("startDateEdit");
+    editStartDate.value = startDate[i];
+    var endDateEdit = document.getElementById("endDateEdit");
+    endDateEdit.value = endDate[i];
+    var startHrsEdit = document.getElementById("startHrsEdit");
+    startHrsEdit.value = startTimeHrs[i];
+    console.log(startTimeHrs[i]);
+    var startMinsEdit = document.getElementById("startMinsEdit");
+    startMinsEdit.value = startTimeMins[i];
+    var startIsAmEdit = document.getElementById("startIsAmEdit");
+    startIsAmEdit.value = startTimeIsAm[i]
+    var endHrsEdit = document.getElementById("endHrsEdit");
+    endHrsEdit.value = endTimeHrs[i]
+    var endMinsEdit = document.getElementById("endMinsEdit");
+    endMinsEdit.value = endTimeMins[i];
+    var endIsAmEdit = document.getElementById("endIsAmEdit");
+    endIsAmEdit.value = endTimeIsAm[i];
+    var editNotes = document.getElementById("editNotes");
+    editNotes.value = notes[i];
+    editMenu.style.display = "block";
+    editID = i;
+}
+//saving it again - dunno why
+var editAppt = document.getElementById("chengeAppt");
+editAppt.onclick = function () {
+    var valid = false;
+    var errorMessage="";
+    if (valid) {
+        var editTitle = document.getElementById("titleEdit").value;
+        var editContact = document.getElementById("contactEdit").value;
+        var editStartDate = document.getElementById("startDateEdit").value;
+        var endDateEdit = document.getElementById("endDateEdit").value;
+        var startHrsEdit = document.getElementById("startHrsEdit").value;
+        var startMinsEdit = document.getElementById("startMinsEdit").value;
+        var startIsAmEdit = document.getElementById("startIsAmEdit").value;
+        var endHrsEdit = document.getElementById("endHrsEdit").value;
+        var endMinsEdit = document.getElementById("endMinsEdit").value;
+        var endIsAmEdit = document.getElementById("endIsAmEdit").value;
+        var editNotes = document.getElementById("editNotes").value;
+        editMenu.style.display = "none";
+        console.log(editTitle);
+        title[i] = editTitle;
+        contact[i] = editContact;
+        startDate[i] = editStartDate;
+        endDate[i] = endDateEdit;
+        startTimeHrs[i] = startHrsEdit;
+        startTimeMins[i] = startMinsEdit;
+        startTimeIsAm[i] = startIsAmEdit;
+        endTimeHrs[i] = endHrsEdit;
+        endTimeMins[i] = endMinsEdit;
+        endTimeIsAm[i] = endIsAmEdit;
+        notes[i] = editNotes;
+        saveToLocalStorage();
+        location.reload();
+    } else {
+        alert(errorMessage);
     }
 }
 
@@ -428,7 +487,7 @@ function save() {
     var inputEndMins = document.getElementById("endMins").value;
     var inputEndisAm = document.getElementById("endIsAm").value;
     var innotes = document.getElementById("note").value;
-    if (intitle != "" && contact != "" && sdate != "" && edate != "" && !compareTimes(sdate, edate, inputStartHrs, inputEndHrs, inputStartMins, inputEndMins, inputStartisAm, inputEndisAm)&& !compareDates(sdate, edate)) {
+    if (intitle != "" && contact != "" && sdate != "" && edate != "" && !compareTimes(sdate, edate, inputStartHrs, inputEndHrs, inputStartMins, inputEndMins, inputStartisAm, inputEndisAm) && !compareDates(sdate, edate)) {
         validInput = true;
     }
     if (validInput) {
@@ -447,6 +506,7 @@ function save() {
         notes[id] = innotes;
         saveToLocalStorage();
         id++;
+        location.reload();
     } else {
         var message = "There was an error with: \r"
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
