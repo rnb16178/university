@@ -15,8 +15,6 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-
-/* Modal Content */
 .addApptMenu-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -31,7 +29,7 @@ body {
 
 .submitt {
   width: 50%;
-  background-color: #4CAF50;
+  background-color: #333;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -91,6 +89,25 @@ h1 {
   float: right;
   padding: 15px 32px;
 }
+.button {
+  background-color: #333; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: white;
+  color: #333;
+  border: 2px solid #333;
+
+}
 
 .appointment {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -100,14 +117,6 @@ h1 {
   border-radius: 10%;
 
 }
-
-.appointment h2 {
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-  background-color: #11c4ff;
-}
-
 
 input[type=text] {
   width: 100%;
@@ -124,12 +133,6 @@ input[type=date] {
   box-sizing: border-box;
 }
 
-input[type=time] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
 
 .topnav {
   overflow: hidden;
@@ -157,40 +160,6 @@ input[type=time] {
   display: none;
 }
 
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 17px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content button {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
 .topnav button:hover,
 .dropdown:hover .dropbtn {
   background-color: #555;
@@ -207,7 +176,6 @@ input[type=time] {
 }
 
 @media screen and (max-width: 600px) {
-
   .topnav button:not(:first-child),
   .dropdown .dropbtn {
     display: none;
@@ -251,13 +219,9 @@ input[type=time] {
   }
 }
 
-
-
-
-
 th,
 td {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0rem;
 }
 
 th {
@@ -282,11 +246,9 @@ td>span {
 ul {list-style-type: none;}
 body {font-family: Verdana, sans-serif;}
 
-/* Month header */
 .month {
   padding: 30px 20px;
-  
-  background: #1abc9c;
+  background: #333;
   text-align: center;
 }
 
@@ -329,7 +291,6 @@ body {font-family: Verdana, sans-serif;}
   text-align: center;
 }
 
-/* Days (1-31) */
 .days {
   padding: 10px 0;
   background: #eee;
@@ -344,11 +305,4 @@ body {font-family: Verdana, sans-serif;}
   margin-bottom: 5px;
   font-size:12px;
   color: #777;
-}
-
-/* Highlight the "current" day */
-.days li .active {
-  padding: 5px;
-  background: #1abc9c;
-  color: white !important
 }

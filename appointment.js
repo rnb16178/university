@@ -44,7 +44,6 @@ var monthSced = document.getElementById("monthSchedule");
 var tableweek = document.getElementById("tableweek");
 var monthTitle = document.getElementById("monthTitle");
 
-list.style.display = "none";
 tableDay.style.display = "none"
 daySchedule.style.display = "none";
 weekSchedule.style.display = "none";
@@ -55,7 +54,6 @@ editMenu.style.display = "none";
 
 
 homeButton.onclick = function () {
-    list.style.display = "none";
     tableDay.style.display = "none"
     daySchedule.style.display = "none";
     weekSchedule.style.display = "none";
@@ -65,7 +63,6 @@ homeButton.onclick = function () {
 
 openDaySched.onclick = function () {
     daySchedule.style.display = "block";
-    list.style.display = "none";
     tableDay.style.display = "none"
     weekSchedule.style.display = "none";
     monthSced.style.display = "none";
@@ -75,7 +72,6 @@ openMenu.onclick = function () {
     addApptMenu.style.display = "block";
 }
 openWeekSched.onclick = function () {
-    list.style.display = "none";
     tableDay.style.display = "none"
     daySchedule.style.display = "none";
     monthSced.style.display = "none";
@@ -85,7 +81,6 @@ openWeekSched.onclick = function () {
 
 openMonthSched.onclick = function () {
     monthSced.style.display = "block";
-    list.style.display = "none";
     tableDay.style.display = "none"
     daySchedule.style.display = "none";
     weekSchedule.style.display = "none";
@@ -115,7 +110,7 @@ function displayMonth() {
     var yearToDisplay = document.getElementById("yearSelect").value;
     var header = document.getElementById("monthTitle");
     monthTitle.style.display = "block";
-    header.innerHTML = ("<h1>" + monthToDisplay + " " + yearToDisplay + "</h1>");
+    header.innerHTML = ("<h1 style='color:white;'>" + monthToDisplay + " " + yearToDisplay + "</h1>");
     var monthID = 0;
     var days = 28;
     if (monthToDisplay === "January") {
@@ -177,7 +172,7 @@ function displayMonth() {
                 var out = "<li>";
                 for (var k = 0; k < savedIDs; k++) {
                     if (new Date(startDate[k]).getMonth() === monthID && parseInt(new Date(startDate[k]).getFullYear()) === parseInt(yearToDisplay) && new Date(startDate[k]).getDate() === (i)) {
-                        out += '<button onclick="openEdit(' + k + ')">' + title[k] + "</button><br>";
+                        out += '<button class ="button" onclick="openEdit(' + k + ')">' + title[k] + "</button><br>";
                         foundAppt = true
                     }
                 }
@@ -232,7 +227,7 @@ function openWeek() {
                         meeting.innerHTML = "<button>" + title[i] + "</button>";
                         meeting.className = "appointment";
                     }
-                    meeting.innerHTML = '<button onclick="openEdit(' + i + ')">' + title[i] + "</button><br>";
+                    meeting.innerHTML = '<button class ="button" onclick="openEdit(' + i + ')">' + title[i] + "</button><br>";
                     meeting.className = "appointment";
                 }
             }
@@ -277,7 +272,7 @@ function openDay() {
                 } else if (startTimeMins[i] == 00 && endTimeMins[i] == 30) {
                     length++;
                 }
-                meeting.innerHTML = '<button onclick="openEdit(' + i + ')">' + title[i] + "</button><br>";
+                meeting.innerHTML = '<button class ="button" onclick="openEdit(' + i + ')">' + title[i] + "</button><br>";
                 meeting.rowSpan = length;
                 meeting.className = "appointment"
                 document.getElementById(time).appendChild(meeting)
@@ -297,7 +292,6 @@ function openEdit(i) {
     endDateEdit.value = endDate[i];
     var startHrsEdit = document.getElementById("startHrsEdit");
     startHrsEdit.value = startTimeHrs[i];
-    console.log(startTimeHrs[i]);
     var startMinsEdit = document.getElementById("startMinsEdit");
     startMinsEdit.value = startTimeMins[i];
     var startIsAmEdit = document.getElementById("startIsAmEdit");
@@ -315,7 +309,6 @@ function openEdit(i) {
 }
 var deleteApptButton = document.getElementById("deleteAppt");
 deleteApptButton.onclick = function () {
-    console.log("deleteButtonPressed"+editID);
     deleteCurrent(editID);
 
 }
@@ -354,7 +347,6 @@ editAppt.onclick = function () {
     }
     if (valid) {
         editMenu.style.display = "none";
-        console.log(editTitle);
         title[editID] = editTitle;
         contact[editID] = editContact;
         startDate[editID] = editStartDate;
@@ -451,10 +443,8 @@ function deleteCurrent(cur) {
 
 function editEntry(i) {
     editMenu.style.display = "block";
-    console.log("edit entry" + i);
 }
 function compareDates(time1, time2) {
-    console.log(new Date(time1) > new Date(time2));
     return new Date(time1) > new Date(time2); // true if time1 is later
 }
 function compareTimes(startDate, endDate, hoursStart, hoursEnd, minsStart, minsEnd, amStart, amEnd) {
@@ -498,7 +488,6 @@ function save() {
     }
     if (validInput) {
         addApptMenu.style.display = "none";
-        display(id, intitle, incontact, sdate, inputStartHrs, inputStartMins, inputStartisAm, edate, inputEndHrs, inputEndMins, inputEndisAm, innotes);
         title[id] = intitle
         contact[id] = incontact;
         startDate[id] = sdate;

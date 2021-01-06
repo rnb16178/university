@@ -673,23 +673,6 @@
   </div>
 
 
-  <table id="list" class="main" style="width:100%">
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Contact</th>
-      <th>Start Date</th>
-      <th>Start Time</th>
-      <th>End Date</th>
-      <th>End Time</th>
-      <th>
-        <div contenteditable>Notes</div>
-      </th>
-      <th></th>
-      <th><button class="editbtn" onclick="deleteAll()">delete All</button></th>
-    </tr>
-  </table>
-
   <div id="monthSchedule">
     <select style="padding: 12px 20px; width: 30%;" id="monthSelect">
       <option value="January">January</option>
@@ -715,7 +698,7 @@
       onclick="displayMonth()">Go
     </button>
     <div class="month" id="monthTitle">
-      month will be here
+      
     </div>
     <div id="monthTable">
 
@@ -908,7 +891,7 @@
       <label for="notes">Notes</label>
       <input type="text" placeholder="notes" id="editNotes">
       <h3><span style="color: red">*</span> Manditory fields</h3>
-      <button id= "deleteAppt" class="fa fa-trash"></button><button class="submitt" id="chengeAppt" style="float: right;">Save Changes</button>
+      <a id= "deleteAppt" class="fa fa-trash"></button><button class="submitt" id="chengeAppt" style="float: right;">Save Changes</a>
     </div>
   </div>
 
