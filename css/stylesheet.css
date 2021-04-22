@@ -1,0 +1,325 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.page-content {
+  padding: 10px;
+}
+.page-content {
+  padding: 10px;
+}
+
+.page-content h1 {
+  text-align: center;
+  padding: 10px;
+}
+
+.box {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.box img {
+  width: 100%;
+}
+
+.box .text {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 4%;
+  text-align: center;
+  width: 100%;
+}
+
+input[type=text],
+select,
+input[type=email],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+input[type=submit] {
+  background-color: white;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  opacity: 0.7;
+}
+
+.contact-form {
+  border-radius: 5px;
+  background-color: black;
+  padding: 20px;
+}
+.contact-form h2 {
+color: white;
+}
+
+.footer {
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+  text-align: center;
+}
+
+.fa {
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  padding: 20px
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+.header-bar {
+  background-color: black;
+  color: white;
+}
+.page-content h1 {
+  text-align: center;
+  padding: 10px;
+}
+.header-bar {
+  background-color: black;
+  color: white;
+}
+
+.nav-container {
+  width: 100%;
+}
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  list-style: none;
+  text-align: center;
+  width: 80%;
+  justify-self: end;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 0.2fr auto 1fr;
+  align-items: center;
+  height: 80px;
+  width: 90%;
+  max-width: 1720px;
+  margin: 0 auto;
+}
+
+#navbar-logo {
+  color: white;
+  justify-self: start;
+  margin-left: 20px;
+}
+
+#navbar-logo {
+  cursor: pointer;
+}
+
+
+
+.nav-links {
+  color: black;
+  text-decoration: none;
+}
+
+.nav-links:hover {
+  opacity: 0.7;
+  transition: all 0.2s ease-out;
+}
+
+.nav-links-btn{
+  background-color: red;
+  padding: 6px 16px;
+
+}
+.menu-toggle .bar{
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  background: black;
+}
+@media screen and (max-width: 768px){
+  .nav-container{
+      position: relative;;
+  }
+  .nav-menu{
+      display: grid;
+      grid-template-columns: auto;
+      background-color: black;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+  }
+  #navbar-logo{
+      margin-left: 20px;
+  }
+  .nav-menu.active{
+      background-color: white;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+  }
+  .nav-links{
+      text-align: center;
+      line-height: 60px;
+      width: 100%;
+      display: table;
+  }
+  .nav-links:hover{
+      background-color: black;
+      color: white;
+      transition: all 0.4s ease-out;
+  }
+  .navbar{
+      width: 100%;
+  }
+  .nav-links-btn{
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      background-color: black;
+      color: white;
+      transition: all 0.4s ease-out;
+  }
+  .nav-links-btn:hover{
+      border:none;
+      padding: 0;
+      border-radius: 0;
+      background-color: black;
+      background-color: white;
+      transition: all 0.4s ease-out;
+  }
+  #mobile-menu{
+      position: absolute;
+      top: 20%;
+      right:5%;
+      transform: translate(5%,20%);
+  }
+  .menu-toggle .bar{
+      display: block;
+      cursor: pointer;
+  }
+
+  .menu-toggle:hover{
+      cursor: pointer;
+  }
+  #mobile-menu.is-active .bar:nth-child(2){
+      opacity: 0;
+
+  }
+  #mobile-menu.is-active .bar:nth-child(1){
+      transform: translateY(8px) rotate(45deg);
+      
+  } #mobile-menu.is-active .bar:nth-child(3){
+      transform: translateY(-8px) rotate(-45deg);
+      
+  }
+}
+.album{
+  width: 300px;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+.album h2{
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.album-container{
+  display: inline-block;
+  text-align: center;
+ width: 100%;
+}
+
+
+.member-div {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+
+}
+
+.member-div img {
+  width: 100%;
+}
+
+.member {
+  width: 300px;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.member-container {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.edit-button {
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  float: right;
+}
+.tour{
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+}
+.tour table{
+  width: 100%;
+}
+.video{
+  margin: 10px;
+  width: 600px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.video-container{
+  display: inline-block;
+  text-align: center;
+width: 100%;
+}
+.form {
+  width: 400px;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 4px;
+background-color: black;
+padding: 20px;
+color: white;
+  
+}
