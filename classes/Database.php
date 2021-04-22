@@ -1,9 +1,10 @@
 <?php
 class Db{
-    private $host ="localhost";
-    private $user="root";
-    private $pwd="";
-    private $dbName="monster-truck";
+    private $host ="eu-cdbr-west-01.cleardb.com";
+    private $user="b403cebe8aca10";
+    private $pwd="8aa45b1c";
+    private $dbName="heroku_ce42be82b3b93d8";
+    
     private $conn;
     private $connected=false;
     private $result;
