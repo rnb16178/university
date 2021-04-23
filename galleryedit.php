@@ -44,7 +44,7 @@ $user = new User();
             <h1><b>Gallery</b>
                 <?php
                 if ($_SESSION['logged-in']) {
-                    echo '<a class="edit-button" href="./Gallery.php">View</a>';
+                    echo '<a class="edit-button" href="./gallery.php">View</a>';
                 }
 
                 ?>
