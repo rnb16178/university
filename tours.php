@@ -40,11 +40,17 @@ $tours=new Tours();
     <div class="page-content">
         <div class="header-bar">
             <h1><b>Tours</b>
-        
+        <?php
+                if ($_SESSION['logged-in']) {
+                    echo '<a class="edit-button" href="./edittours.php">Edit</a>';
+                }
+                ?>
             </h1>
         </div>
         <br>
-
+<?php
+        $tours->displayTours();
+        ?>
     </div>
 
 
