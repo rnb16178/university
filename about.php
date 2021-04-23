@@ -2,10 +2,10 @@
 session_start();
 include 'classes/Database.php';
 include 'classes/User.php';
+include 'classes/About.php';
 $Db = new Db();
-if(!isset($_SESSION['logged-in'])){
-    $_SESSION['logged-in']=false;
-}
+$about = new About();
+$user = new User();
 ?>
 <!doctype html>
 <html lang="en">
@@ -52,38 +52,10 @@ if(!isset($_SESSION['logged-in'])){
         </div>
 
         <div class="biography">
-            <h1>Biography</h1>
+            
             <?php
-            $Db->connect();
-            $sql = "SELECT * FROM content WHERE section = 'about'";
-            $result = $Db->select($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<p>" . $row['content'] . "</p>";
-                }
-            }
-            echo '</div>';
-            $sql = "SELECT * FROM members";
-            $result = $Db->select($sql);
-            if ($result->num_rows > 0) {
-                echo "<div class=member-container><h1>Band Members</h1>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='member'>";
-                    echo "<img width= 300px src='uploads/".$row['imagename']."'/><br>";
-                    echo "<h2>" . $row["name"] . "</h2>";
-
-                    echo "<h3> " . $row["position"], "</h3>";
-                    echo "</div>";
-                }
-                echo '</div><br>';
-            }
-
-            $Db->disconnect();
-            ?>
-
-            <?php;
-  
-        ?>
+           $about->displayAbout();
+           ?>
         </div>
 
 

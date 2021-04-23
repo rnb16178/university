@@ -1,8 +1,12 @@
 <?php
 include 'classes/Database.php';
 include 'classes/User.php';
+include 'classes/Music.php';
+
 $Db = new Db();
-session_start();?>
+$music = new Music();
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -66,22 +70,8 @@ width: 100%;
 
   
         <?php
-        $Db->connect();
-            $sql = "SELECT * from music";
-            $result = $Db->select($sql);
-            if ($result->num_rows > 0) {
-
-                echo '<div class="album-container">';
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="album">
-                    <iframe width="600px" height="300px" src="'.$row['url'].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>';
-                }
-                echo '</div>';
-            } else {
-                echo '<p>There are no music videos available at the moment</p>';
-            }
-            ?>
+        $music->displayMusic();
+        ?>
 
         </div>
 

@@ -1,7 +1,10 @@
 <?php
 include 'classes/Database.php';
 include 'classes/User.php';
+include 'classes/Discography.php';
+
 $Db = new Db();
+$discography = new Discography();
 session_start();
 ?>
 <!doctype html>
@@ -52,53 +55,8 @@ session_start();
             </h1>
         </div>
         <?php
-        $Db->connect();
-        $sql = "SELECT * FROM discography WHERE type = 'album'";
-        $result = $Db->select($sql);
-        if ($result->num_rows > 0) {
-            echo "<div class=album-container><h1>Albums</h1>";
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='album'>";
-                echo "<h2>" . $row["name"] . "</h2>";
-                echo "<br><img width= 300px src='uploads/".$row['imagename']."'/><br>";
 
-                echo "<br><h3>About</h3>" . $row["about"];
-                echo "<br><hr><br><h3>Tracks</h3>";
-                $sql = "SELECT * FROM tracks WHERE album = '" . $row["name"] . "'";
-                $result2 = $Db->select($sql);
-                if ($result2) {
-                    if ($result2->num_rows > 0) {
-                        echo "<ul>";
-                        while ($row2 = $result2->fetch_assoc()) {
-                            echo "
-                        <li>" . $row2["title"] . "</li>";
-                        }
-                        echo "</ul>";
-                    }
-                }
-        ?>
-             
-        <?php
-                echo "</div>";
-            }
-            echo '</div><br>';
-        }
-        $sql = "SELECT * FROM discography WHERE type = 'single'";
-        $result = $Db->select($sql);
-        if ($result->num_rows > 0) {
-            echo "<div class=album-container><h1>Singles</h1>";
-
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='album'>";
-                echo "<h2>" . $row["name"] . "</h2>";
-                echo "<br><img width= 300px src='uploads/".$row['imagename']."'/><br>";
-                echo $row["about"];
-                echo "<p> " . $row["tracks"], "</p>";
-                echo "</div>";
-            }
-            echo "</div>";
-        }
-        $Db->disconnect();
+        $discography->displayDiscography();
 
         ?>
     </div>

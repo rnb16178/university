@@ -1,16 +1,11 @@
 <?php
 include 'classes/Database.php';
-include 'classes/User.php';
-$Db = new Db();
-
-if (isset($_POST['biography'])){
-    $Db->connect();
-    $sql = "UPDATE `content` SET `content` = '".$_POST['biography']."' WHERE `content`.`id` =".$_POST['id']."";
-    if($Db->insert($sql)){
-        echo"success";
-        header("Location: editabout.php");
-    }else{
-        echo"failure";
-        echo $sql;
-    }
+include 'classes/About.php';
+$about = new About();
+$id= filter_input(INPUT_POST, "id");
+$biography= filter_input(INPUT_POST, "biography");
+if (isset($id)&&isset($biography)){
+    $about->saveBiography($biography,$id);
+}else{
+    //TODO - error message handling
 }

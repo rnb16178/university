@@ -2,7 +2,10 @@
 session_start();
 include 'classes/Database.php';
 include 'classes/User.php';
+include 'classes/Tours.php';
+
 $Db = new Db();
+$tours= new Tours();
 ?>
 
 <!doctype html>
@@ -49,76 +52,8 @@ $Db = new Db();
         </div>
         <br>
         <?php
-        if($_SESSION['logged-in']){
-        $Db->connect();
-        $sql = "SELECT * FROM tours";
-        $result = $Db->select($sql);
-        if ($result->num_rows > 0) {
-            echo '<div class="tour"><table><tr>
-         <th><h2>Date</h2></th>
-         <th>Venue</th>
-         <th>City</th>
-         </tr>';
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><form method='post' action='updateTours.php'>";
-                list($year, $month, $day) = explode('-', $row['date']);
-                if ($month == 1) {
-                    $month = "Jan";
-                } else if ($month == 2) {
-                    $month = "Feb";
-                } else if ($month == 3) {
-                    $month = "Mar";
-                } else if ($month == 4) {
-                    $month = "Apr";
-                } else if ($month == 5) {
-                    $month = "May";
-                } else if ($month == 6) {
-                    $month = "June";
-                } else if ($month == 7) {
-                    $month = "Jul";
-                } else if ($month == 8) {
-                    $month = "Aug";
-                } else if ($month == 9) {
-                    $month = "Sep";
-                } else if ($month == 10) {
-                    $month = "Oct";
-                } else if ($month == 11) {
-                    $month = "Nov";
-                } else if ($month == 12) {
-                    $month = "Dec";
-                }
-                echo'<input type=hidden name="id" value='.$row["id"].'>';
-                echo "<td>" ."<input type='date' name='date' value='".$row["date"] . "'></td>";
-                echo "<td>" ."<input type='text' name='venue' value='".$row["venue"] . "'></td>";
-                echo "<td>" ."<input type='text' name='country' value='".$row["country"] . "'></td>";
-                echo "<td><input type='submit' name='action' value='Update' >" .  "</td>";
-                echo "<td><input type='submit' name='action' value='Delete' >" .  "</td>";
-
-                echo "</form></tr></div>";
-            }
-            echo "</table>";
-            ?>
-            <h2>Add New Tour</h2>
-            <form action="updateTours.php" method="post">
-                <input type="hidden" name="add" value="selected">
-            <input type="date" name="date">
-            <input type="text" name="venue" placeholder="Venue">
-            <input type="text" name="city" placeholder="city">
-            <input type='submit' name='action' value='Add' >
-            </form>
-            <?php
-        } else {
-            echo "<p>There currently arent any tours planned</p>";
-        }
+        $tours->displayEditTours();
         ?>
-
-    </div>
-    <?php
-        }else{
-            header("Location: tours.php");
-        }
-
-?>
 
 <script>
             const menu = document.querySelector('#mobile-menu');

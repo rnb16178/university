@@ -4,10 +4,9 @@ include 'classes/Database.php';
 include 'classes/User.php';
 include 'classes/About.php';
 $Db = new Db();
-$About = new About();
-if(!isset($_SESSION['logged-in'])){
-    $_SESSION['logged-in']=false;
-}
+$about = new About();
+$user = new User();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -161,62 +160,9 @@ if(!isset($_SESSION['logged-in'])){
                 ?>
             </h1>
         </div>
-        <?php
-        if($_SESSION['logged-in']){
-            ?>
-        <div class="biography">
-            <h1>Biography</h1>
-            <?php
-            $Db->connect();
-            $sql = "SELECT * FROM content WHERE section = 'about'";
-            $result = $Db->select($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<form action='saveBio.php' method='post'><textarea name='biography' rows ='10' style='width: 100%;'>" . $row['content'] . "</textarea><input type='hidden' name='id' value='" . $row['id'] . "'><input type='submit' value='Save'></form>";
-                }
-            }
-            echo '</div>';
-            $sql = "SELECT * FROM members";
-            $result = $Db->select($sql);
-            if ($result->num_rows > 0) {
-                echo "<div class=member-container><h1>Band Members</h1>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='member'><form action='editMember.php' method='post'enctype='multipart/form-data'>";
-                    echo "<input type='hidden' name='id' value='".$row["id"]."'>";
-                    echo '<input type="hidden" name="oldPhoto" value="'.$row['imagename'].'">';
-                    echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
-                    echo "<img width= 300px src='uploads/".$row['imagename']."'/><br>";
-                    echo "<input type='file' name='my_image' >";
-                    echo "<input type='text' name='name' value='".$row["name"] . "'>";
-                    echo "<input type='text' name='position' value='".$row["position"] . "'>";
-                    echo '<input type="submit" name="action" value="Update" />
-                          <input type="submit" name="action" value="Delete" />';
-                    echo "</form></div>";
-                }
-                echo '</div><br>';
-            }
-
-            $Db->disconnect();
-            ?>
-            <div class="member-form">
-                <p>Add new Band Member</p>
-                <form action="addMember.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="addmember" value="true">
-                    <input type="file" name="image">
-                    <input type="text" name="name" placeholder="name">
-                    <input type="text" name="position" placeholder="position">
-                    <input type="submit" name="save">
-                </form>
-            </div>
-            <?php;
-  
-        ?>
-        </div>
-<?php
-}else{
-    header("Location: about.php");
-}
-?>
+  <?php
+  $about->displayEditAbout();
+  ?>
  <script>
             const menu = document.querySelector('#mobile-menu');
             const menuLinks = document.querySelector('.nav-menu');

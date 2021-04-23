@@ -1,17 +1,19 @@
 <?php
 include 'classes/Database.php';
+include 'classes/About.php';
+
 $database = new Db();
-$database->connect();
-if (null!==filter_input(INPUT_POST, "addmember")) {
+$about = new About();
+
+if (null!==(filter_input(INPUT_POST, "addmember"))) {
     $name = filter_input(INPUT_POST, "name");
     $position = filter_input(INPUT_POST, "position");
-    $image = filter_input(INPUT_POST, "image");
-    $sql = "INSERT INTO `members` (`id`, `name`, `position`, `photo`) VALUES (NULL, \"$name\", \"$position\", \"$image\");";
-    if ($database->insert($sql)) {
-        header("Location: editAbout.php");
-        $conn->close();
-    } else {
-        echo "<script> alert('Record not inserted');</script>";
-    }
-    $database->disconnect();
+    $image = filter_input(INPUT_POST, "my_image");
+    $img_name = $_FILES['my_image']['name'];
+    $img_size = $_FILES['my_image']['size'];
+    $tmp_name = $_FILES['my_image']['tmp_name'];
+    $error = $_FILES['my_image']['error'];
+
+
+    $about->addMember($name, $position, $image, $img_name, $img_size, $tmp_name,$error);
 }

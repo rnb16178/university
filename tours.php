@@ -2,7 +2,10 @@
 session_start();
 include 'classes/Database.php';
 include 'classes/User.php';
+include 'classes/Tours.php';
+
 $Db = new Db();
+$tours=new Tours();
 ?>
 
 <!doctype html>
@@ -47,54 +50,8 @@ $Db = new Db();
         </div>
         <br>
         <?php
-        $Db->connect();
-        $sql = "SELECT * FROM tours";
-        $result = $Db->select($sql);
-        if ($result->num_rows > 0) {
-            echo '<div class="tour"><table><tr>
-         <th><h2>Date</h2></th>
-         <th>Venue</th>
-         <th>City</th>
-         </tr>';
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                list($year, $month, $day) = explode('-', $row['date']);
-                if ($month == 1) {
-                    $month = "Jan";
-                } else if ($month == 2) {
-                    $month = "Feb";
-                } else if ($month == 3) {
-                    $month = "Mar";
-                } else if ($month == 4) {
-                    $month = "Apr";
-                } else if ($month == 5) {
-                    $month = "May";
-                } else if ($month == 6) {
-                    $month = "June";
-                } else if ($month == 7) {
-                    $month = "Jul";
-                } else if ($month == 8) {
-                    $month = "Aug";
-                } else if ($month == 9) {
-                    $month = "Sep";
-                } else if ($month == 10) {
-                    $month = "Oct";
-                } else if ($month == 11) {
-                    $month = "Nov";
-                } else if ($month == 12) {
-                    $month = "Dec";
-                }
-                echo "<td>" . $day . " " . $month . " " . $year . "</td>";
-                echo "<td>" . $row["venue"] . "</td>";
-                echo "<td>" . $row["country"] . "</td>";
-                echo "</tr></div>";
-            }
-            echo "</table>";
-        } else {
-            echo "<p>There currently arent any tours planned</p>";
-        }
+        $tours->displayTours();
         ?>
-
     </div>
 
 

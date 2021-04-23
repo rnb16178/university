@@ -2,6 +2,7 @@
 include_once 'classes/Database.php';
 class Gallery extends Db
 {
+    //updates the image description on the database
     public function updateDesc($description, $id)
     {
         echo $sql = "UPDATE gallery SET description='$description' WHERE id=$id";
@@ -13,13 +14,16 @@ class Gallery extends Db
             echo "<p>Error deleting record!</p>\n\t</body>\n</html>";
         }
     }
+
+    //deletes the old image file from the server
+    public function deleteImage($filename){
+        unlink("uploads/".$filename);
+    }
+
+    //saves the new image to the database
     public function updateImage($oldimage, $newimage, $id, $img_name, $img_size, $tmp_name, $error)
     {
-        $image = $oldimage;
-
-        if (isset($newimage)) {
-            $image = $newimage;
-        }
+        $this->deleteImage($oldimage);
         $this->connect();
 
         echo "<pre>";
@@ -58,6 +62,7 @@ class Gallery extends Db
             //header("Location: index.php?error=$em");
         }
     }
+    //adds a new image to the database
     public function addImage($img_name, $img_size, $tmp_name, $error, $description)
     {
         $this->connect();
@@ -100,6 +105,7 @@ class Gallery extends Db
         }
     }
 
+    //displays the content for the admin gallery page
     public function displayEditMenu()
     {
         $this->connect();
@@ -138,6 +144,7 @@ class Gallery extends Db
         $this->disconnect();
     }
 
+    //displays the gallery
     public function displayGallery()
     {
         $this->connect();
@@ -160,10 +167,5 @@ class Gallery extends Db
 
         $this->disconnect();
     }
-    public function hello()
-    {
-        $this->connect();
-        $this->disconnect();
-        return "hello from Gallery";
-    }
+  
 }
