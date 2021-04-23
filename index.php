@@ -46,7 +46,7 @@ if (!isset($_SESSION['logged-in'])) {
                 ?>
             </h1>
         </div>
-        <p>Hello World</p>
+        
     </div>
 
 
