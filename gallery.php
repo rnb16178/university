@@ -46,7 +46,7 @@ if (!isset($_SESSION['logged-in'])) {
             <h1><b>Gallery</b>
                 <?php
                 if ($_SESSION['logged-in']) {
-                    echo '<a class="edit-button" href="./Galleryedit.php">Edit</a>';
+                    echo '<a class="edit-button" href="./galleryedit.php">Edit</a>';
                 }
                 ?>
             </h1>
