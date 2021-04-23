@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'classes/Database.php';
+include 'classes/User.php';
+include 'classes/Tours.php';
+
+$Db = new Db();
+$tours=new Tours();
+?>
 <!doctype html>
 <html lang="en">
 
